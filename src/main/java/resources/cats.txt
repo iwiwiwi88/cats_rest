@@ -1,4 +1,3 @@
 Piki,water
 Maurycy,cream
 Bonifacy,mice
-Kitty,pork

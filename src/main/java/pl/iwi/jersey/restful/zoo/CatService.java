@@ -17,6 +17,7 @@ public class CatService {
 
 	public boolean addCat(Cat cat) {
 		if (catExists(cat.getName()))
+			// TODO editCat(cat);
 			return true;
 		try {
 			FileWriter fw = new FileWriter(file, true);
