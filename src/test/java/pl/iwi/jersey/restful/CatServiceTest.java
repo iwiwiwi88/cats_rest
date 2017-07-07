@@ -6,7 +6,7 @@ import org.junit.Test;
 import pl.iwi.jersey.restful.zoo.Cat;
 import pl.iwi.jersey.restful.zoo.CatService;
 
-public class CatCsvServiceTest {
+public class CatServiceTest {
 
 	@Test
 	public void getCatsTest() {

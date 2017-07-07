@@ -37,7 +37,7 @@ public class CatsResource {
 	}
 
 	@POST
-	@Path("{catName}/{favFood}")
+	@Path("post/{catName}/{favFood}")
 	@Produces(MediaType.TEXT_PLAIN)
 	public String addCat(@PathParam("catName") String catName,
 			@PathParam("favFood") String favFood) {
