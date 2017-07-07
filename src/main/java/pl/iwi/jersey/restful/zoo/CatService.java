@@ -12,7 +12,7 @@ import java.util.List;
 
 public class CatService {
 
-	String path = "D:\\STS\\sts_workspace\\restful\\src\\main\\java\\resources\\cats.txt";
+	String path = "src\\main\\java\\resources\\cats.txt";
 	File file = new File(path);
 
 	public boolean addCat(Cat cat) {
