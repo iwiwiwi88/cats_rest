@@ -3,8 +3,8 @@ package pl.iwi.jersey.restful;
 import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
-import pl.iwi.jersey.restful.zoo.Cat;
-import pl.iwi.jersey.restful.zoo.CatService;
+import pl.iwi.jersey.restful.cats.Cat;
+import pl.iwi.jersey.restful.cats.CatService;
 
 public class CatServiceTest {
 

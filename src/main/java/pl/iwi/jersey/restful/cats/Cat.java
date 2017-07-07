@@ -1,4 +1,4 @@
-package pl.iwi.jersey.restful.zoo;
+package pl.iwi.jersey.restful.cats;
 
 public class Cat {
 

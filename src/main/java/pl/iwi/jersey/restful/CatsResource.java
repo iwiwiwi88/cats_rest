@@ -6,8 +6,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import pl.iwi.jersey.restful.zoo.Cat;
-import pl.iwi.jersey.restful.zoo.CatService;
+import pl.iwi.jersey.restful.cats.Cat;
+import pl.iwi.jersey.restful.cats.CatService;
 
 @Path("cats")
 public class CatsResource {
