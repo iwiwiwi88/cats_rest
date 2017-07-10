@@ -6,13 +6,14 @@ import pl.iwi.jersey.restful.helpers.CatsFileService;
 public class CatService {
 
 	CatsFileService fileService = new CatsFileService();
-	
+
 	public boolean addCat(Cat cat) {
 		if (catExists(cat.getName())) {
-			fileService.updateCatLine(getCat(cat.getName()), cat);
+			fileService.updateCatLine(cat);
 			return true;
+		} else {
+			fileService.addCatLine(cat);
 		}
-		fileService.addCatLine(cat);
 		return catExists(cat.getName());
 	}
 
@@ -32,7 +33,6 @@ public class CatService {
 	}
 
 	public boolean catExists(String name) {
-		Cat cat = getCat(name);
-		return cat != null;
+		return fileService.exists(name);
 	}
 }

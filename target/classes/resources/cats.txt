@@ -1,3 +1,2 @@
 Piki,water
-Maurycy,cream
-Bonifacy,mice
+Maurycy,tuna

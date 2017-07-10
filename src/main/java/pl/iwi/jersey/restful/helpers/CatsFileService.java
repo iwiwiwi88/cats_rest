@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import pl.iwi.jersey.restful.cats.Cat;
@@ -14,25 +15,63 @@ import pl.iwi.jersey.restful.cats.Cat;
 public class CatsFileService {
 
 	final public File FILE = new File("src\\main\\java\\resources\\cats.txt");
-	
+
 	public boolean addCatLine(Cat cat) {
 		try {
 			FileWriter fw = new FileWriter(FILE, true);
 			BufferedWriter writer = new BufferedWriter(fw);
 			writer.newLine();
-			writer.write(cat.getName() + "," + cat.getFavFood());
+			writer.write(formatCatEntry(cat));
 			writer.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return false;
+		return true;
+	}
+
+	public boolean addCatLines(List<Cat> cats) {
+		try {
+			FileWriter fw = new FileWriter(FILE, true);
+			BufferedWriter writer = new BufferedWriter(fw);
+			writer.write(formatCatEntry(cats.get(0)));
+			cats.remove(0);
+			for (Cat cat : cats) {
+				writer.newLine();
+				writer.write(formatCatEntry(cat));
+			}
+			writer.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return true;
+	}
+
+	private String formatCatEntry(Cat cat) {
+		return cat.getName() + "," + cat.getFavFood();
+	}
+
+	public boolean updateCatLine(Cat newCat) {
+		List<Cat> cats = getCatsFromFile();
+		for (Cat cat : cats) {
+			if (cat.getName().equals(newCat.getName())) {
+				cat.setFavFood(newCat.getFavFood());
+				break;
+			}
+		}
+		rewriteCatFile(cats);
+		return exists(newCat.getName());
 	}
 	
-	public boolean updateCatLine(Cat oldCat, Cat newCat) {
-		// TODO not yet implemented
-		return false;
+	public boolean rewriteCatFile(List<Cat> cats) {
+		try {
+			new PrintWriter(FILE).close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		addCatLines(cats);
+		return true;
 	}
-	
+
 	public List<Cat> getCatsFromFile() {
 		List<Cat> cats = new ArrayList<Cat>();
 		for (String line : getLines()) {
@@ -41,7 +80,18 @@ public class CatsFileService {
 		}
 		return cats;
 	}
-	
+
+	public boolean exists(String name) {
+		boolean exists = false;
+		for (Cat c : getCatsFromFile()) {
+			if (c.getName().equals(name)) {
+				exists = true;
+				break;
+			}
+		}
+		return exists;
+	}
+
 	@SuppressWarnings("resource")
 	private List<String> getLines() {
 		List<String> lines = new ArrayList<String>();
