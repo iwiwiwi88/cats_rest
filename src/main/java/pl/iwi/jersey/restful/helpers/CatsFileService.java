@@ -61,7 +61,7 @@ public class CatsFileService {
 		rewriteCatFile(cats);
 		return exists(newCat.getName());
 	}
-	
+
 	public boolean rewriteCatFile(List<Cat> cats) {
 		try {
 			new PrintWriter(FILE).close();
@@ -106,5 +106,23 @@ public class CatsFileService {
 			e.printStackTrace();
 		}
 		return lines;
+	}
+
+	public boolean deleteCatLine(String name) {
+		if (!exists(name)) {
+			System.out.println("Cat "+name+" didn't exist anyway");
+			return true;
+		}
+		List<Cat> cats = getCatsFromFile();
+		int catsId = -1;
+		for (int i = 0; i < cats.size(); i++) {
+			if (cats.get(i).getName().equals(name)) {
+				catsId = i;
+				break;
+			}
+		}
+		cats.remove(catsId);
+		rewriteCatFile(cats);
+		return !exists(name);
 	}
 }

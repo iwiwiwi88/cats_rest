@@ -35,4 +35,8 @@ public class CatService {
 	public boolean catExists(String name) {
 		return fileService.exists(name);
 	}
+
+	public boolean deleteCat(String name) {
+		return fileService.deleteCatLine(name);
+	}
 }

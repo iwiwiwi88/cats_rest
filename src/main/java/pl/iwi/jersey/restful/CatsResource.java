@@ -1,5 +1,6 @@
 package pl.iwi.jersey.restful;
 
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -19,7 +20,7 @@ public class CatsResource {
 	public String getCats() {
 		StringBuilder sb = new StringBuilder();
 		for (Cat cat : service.getCats()) {
-			sb.append(cat.toString()+"\n");
+			sb.append(cat.toString() + "\n");
 		}
 		return sb.toString();
 	}
@@ -45,4 +46,14 @@ public class CatsResource {
 		return "New cat was born: " + service.getCat(catName).toString();
 	}
 
+	@DELETE
+	@Path("delete/{catName}")
+	@Produces(MediaType.TEXT_PLAIN)
+	public String deleteCat(@PathParam("catName") String catName) {
+		if (service.deleteCat(catName)) {
+			return "Cat " + catName + " was destroyed.";
+		} else {
+			return "No cat with name: "+ catName;
+		}
+	}
 }
