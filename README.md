@@ -14,8 +14,8 @@ http://localhost:8080/iwi/cats/[name]
 
 ==== POST ====
 
-Add new cat:
-http://localhost:8080/iwi/cats/post/[name]/[favourite food]
+Add a new cat or update if it already exists:
+http://localhost:8080/iwi/cats/post/[name]/[favouriteFood]
 
 
 ==== DELETE ====
