@@ -1,5 +1,5 @@
 # cats_rest
-Silly way of learning RESTful API with Jersey
+Silly way of learning RESTful API (Jersey, Grizzly, GSON)
 
 **************************
 ********** API ***********
