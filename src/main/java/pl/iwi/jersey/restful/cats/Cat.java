@@ -23,11 +23,11 @@ public class Cat {
 		this.name = name;
 	}
 
-	public String getFavFood() {
+	public String getFavouriteFood() {
 		return favouriteFood;
 	}
 
-	public void setFavFood(String favFood) {
+	public void setFavouriteFood(String favFood) {
 		this.favouriteFood = favFood;
 	}
 	

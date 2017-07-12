@@ -47,14 +47,14 @@ public class CatsFileService {
 	}
 
 	private String formatCatEntry(Cat cat) {
-		return cat.getName() + "," + cat.getFavFood();
+		return cat.getName() + "," + cat.getFavouriteFood();
 	}
 
 	public boolean updateCatLine(Cat newCat) {
 		List<Cat> cats = getCatsFromFile();
 		for (Cat cat : cats) {
 			if (cat.getName().equals(newCat.getName())) {
-				cat.setFavFood(newCat.getFavFood());
+				cat.setFavouriteFood(newCat.getFavouriteFood());
 				break;
 			}
 		}
