@@ -7,7 +7,7 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import pl.iwi.jersey.restful.cats.Cat;
-import pl.iwi.jersey.restful.helpers.CatsJsonService;
+import pl.iwi.jersey.restful.json.CatsJsonService;
 
 public class CatsJsonServiceTest {
 

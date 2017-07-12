@@ -8,12 +8,12 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import pl.iwi.jersey.restful.cats.Cat;
-import pl.iwi.jersey.restful.cats.CatService;
+import pl.iwi.jersey.restful.json.CatsJsonService;
 
 @Path("cats")
 public class CatsResource {
 
-	CatService service = new CatService();
+	CatsJsonService service = new CatsJsonService();
 
 	@GET
 	@Produces(MediaType.TEXT_PLAIN)

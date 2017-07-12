@@ -1,4 +1,4 @@
-package pl.iwi.jersey.restful.helpers;
+package pl.iwi.jersey.restful.json;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -33,8 +33,8 @@ public class CatsJsonService {
 			List<Cat> cats = getCats();
 			cats.add(cat);
 			writeToFile(constructJson(cats));
-			return true;
 		}
+		return exists(cat.getName());
 	}
 
 	public boolean updateCat(Cat cat) {
