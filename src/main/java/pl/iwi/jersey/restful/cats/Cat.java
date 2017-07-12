@@ -4,11 +4,11 @@ public class Cat {
 
 	private String name = null;
 	
-	private String favFood = null;
+	private String favouriteFood = null;
 	
 	public Cat(String name, String favFood) {
 		this.name = name;
-		this.favFood = favFood;
+		this.favouriteFood = favFood;
 	}
 
 	public Cat(String name) {
@@ -24,15 +24,15 @@ public class Cat {
 	}
 
 	public String getFavFood() {
-		return favFood;
+		return favouriteFood;
 	}
 
 	public void setFavFood(String favFood) {
-		this.favFood = favFood;
+		this.favouriteFood = favFood;
 	}
 	
 	public String toString() {
-		return name+" the cat likes to eat "+favFood;
+		return name+" the cat likes to eat "+favouriteFood;
 		
 	}
 }
