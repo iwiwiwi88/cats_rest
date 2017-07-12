@@ -1,5 +1,8 @@
 package pl.iwi.jersey.restful;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -16,22 +19,18 @@ public class CatsResource {
 	CatsJsonService service = new CatsJsonService();
 
 	@GET
-	@Produces(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.APPLICATION_JSON)
 	public String getCats() {
-		StringBuilder sb = new StringBuilder();
-		for (Cat cat : service.getCats()) {
-			sb.append(cat.toString() + "\n");
-		}
-		return sb.toString();
+		return service.constructJson(service.getCats());
 	}
 
 	@GET
 	@Path("{catName}")
-	@Produces(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.APPLICATION_JSON)
 	public String getCat(@PathParam("catName") String catName) {
 		Cat cat = service.getCat(catName);
 		if (cat != null) {
-			return cat.toString();
+			return service.constructJson(cat);
 		} else {
 			return "No cat with name: " + catName;
 		}
@@ -39,21 +38,21 @@ public class CatsResource {
 
 	@POST
 	@Path("post/{catName}/{favFood}")
-	@Produces(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.APPLICATION_JSON)
 	public String addCat(@PathParam("catName") String catName,
 			@PathParam("favFood") String favFood) {
 		service.addCat(new Cat(catName, favFood));
-		return "New cat was born: " + service.getCat(catName).toString();
+		return service.constructJson(service.getCat(catName));
 	}
 
 	@DELETE
 	@Path("delete/{catName}")
-	@Produces(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.APPLICATION_JSON)
 	public String deleteCat(@PathParam("catName") String catName) {
 		if (service.deleteCat(catName)) {
-			return "Cat " + catName + " was destroyed.";
+			return service.constructJson(service.getCats());
 		} else {
-			return "No cat with name: "+ catName;
+			return "No cat with name: " + catName;
 		}
 	}
 }

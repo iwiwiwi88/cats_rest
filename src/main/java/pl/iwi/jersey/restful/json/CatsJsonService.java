@@ -93,6 +93,10 @@ public class CatsJsonService {
 	public String constructJson(List<Cat> cats) {
 		return gson.toJson(cats);
 	}
+	
+	public String constructJson(Cat cat) {
+		return gson.toJson(cat);
+	}
 
 	public void writeToFile(String json) {
 		try {
