@@ -3,6 +3,7 @@ package pl.iwi.jersey.restful;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -33,6 +34,15 @@ public class CatsResource {
 		}
 	}
 
+	@PUT
+	@Path("put/{catName}/{favFood}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String updateCat(@PathParam("catName") String catName,
+			@PathParam("favFood") String favFood) {
+		service.updateCat(new Cat(catName, favFood));
+		return service.constructJson(service.getCat(catName));
+	}
+	
 	@POST
 	@Path("post/{catName}/{favFood}")
 	@Produces(MediaType.APPLICATION_JSON)
